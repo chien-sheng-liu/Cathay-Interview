@@ -1,0 +1,4 @@
+numpy==1.26.4        # matrix ops and CSV export
+pytest==7.4.4        # unit tests
+# Optional: uncomment if you want richer CLI colors or dev tools
+# rich==13.7.0
