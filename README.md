@@ -2,14 +2,15 @@
 
 A minimal solution for the "Spend Propensity & Recommendation" assessment. It loads a member–category propensity matrix (N×10), analyzes distributions, and provides a simple recommendation function to return top categories per member.
 
-## Quick Start
-- Create/activate any Python 3.10+ environment (Conda/venv optional)
-- Reproduce environment: `python -m pip install -r requirements.txt`
-- Demo recommendation: `python scripts/demo.py --member-id 123`
-- Analyze dataset: `python scripts/analyze.py`
-- Run tests: `pytest -q`
+## Repository Structure
+- `src/propensity/` core logic (`data.py`, `recommendation.py`)
+- `scripts/` CLI tools (`demo.py`, `analyze.py`)
+- `tests/` unit tests
+- `data/` input artifacts (e.g., `spend_propensity.ndarray`)
+- `docs/` brief and design notes
 
 ## Web Frontend (React via npm)
+### High recommend with visualization version
 - Export CSV from ndarray: `python scripts/export_csv.py` (writes `data/spend_propensity.csv`)
 - Setup frontend:
   - cd frontend
@@ -18,7 +19,16 @@ A minimal solution for the "Spend Propensity & Recommendation" assessment. It lo
 - Open the dev URL shown by Vite (default http://127.0.0.1:5173)
   - The app auto-loads `frontend/public/spend_propensity.csv` and shows data when ready
 
-Troubleshooting
+## Quick Start
+### Using terminal to quickly see the results 
+- Create/activate any Python 3.10+ environment (Conda/venv optional)
+- Reproduce environment: `python -m pip install -r requirements.txt`
+- Demo recommendation: `python scripts/demo.py --member-id 123`
+- Analyze dataset: `python scripts/analyze.py`
+- Run tests: `pytest -q`
+
+
+### Troubleshooting
 - If you see a prompt to upload or an error:
   - Ensure `frontend/public/spend_propensity.csv` exists. Generate it with `python scripts/export_csv.py`.
   - Hard refresh the browser (to bypass cache) or click “Retry Load”.
@@ -28,13 +38,6 @@ Troubleshooting
 - npm run lint
 - npm run format
 - npm run typecheck
-
-## Repository Structure
-- `src/propensity/` core logic (`data.py`, `recommendation.py`)
-- `scripts/` CLI tools (`demo.py`, `analyze.py`)
-- `tests/` unit tests
-- `data/` input artifacts (e.g., `spend_propensity.ndarray`)
-- `docs/` brief and design notes
 
 ## Recommendation API
 Function: `propensity.get_member_recommendation(member_id: str, **kwargs)`
